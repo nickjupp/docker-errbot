@@ -1,6 +1,6 @@
 # Errbot - the pluggable chatbot
 
-FROM debian:jessie
+FROM debian:stretch
 
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
@@ -44,7 +44,8 @@ RUN apt-get update \
     && pip3 install virtualenv \
     && pip3 install -U setuptools \
     && pip3 install slackclient \
-	&& rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /var/cache/apt/archives
 
 RUN mkdir /srv/data /srv/plugins /srv/errbackends /app \
     && chown -R $ERR_USER: /srv /app
